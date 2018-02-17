@@ -1,0 +1,41 @@
+{
+  "consumer": {
+    "name": "Animals Client"
+  },
+  "provider": {
+    "name": "Animals Service"
+  },
+  "interactions": [
+    {
+      "description": "a request for all cats",
+      "providerState": "some cats exist",
+      "request": {
+        "method": "get",
+        "path": "/cats"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "cats": [
+            {
+              "name": "Garfield"
+            },
+            {
+              "name": "Felix"
+            },
+            {
+              "name": "Silvester"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
