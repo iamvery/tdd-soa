@@ -46,6 +46,7 @@ group :development do
 end
 
 group :test do
+  gem 'pact'
   gem 'rspec-rails'
 end
 
