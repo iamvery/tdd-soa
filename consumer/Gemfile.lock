@@ -1,3 +1,8 @@
+PATH
+  remote: ../producer_client
+  specs:
+    animals (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -189,6 +194,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  animals!
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
