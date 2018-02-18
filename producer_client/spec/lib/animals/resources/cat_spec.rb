@@ -1,13 +1,9 @@
 require 'spec_helper'
 require 'service_providers/pact_helper'
 require 'animals/resources/cat'
-require 'support/service_config'
+require 'behaviors/cat_resource'
 
 RSpec.describe Animals::Resources::Cat, :pact do
-  include ServiceConfig
-
-  subject(:resource) { described_class.new(animals_uri) }
-
   describe '#list' do
     before do
       body = {
@@ -25,14 +21,6 @@ RSpec.describe Animals::Resources::Cat, :pact do
         .will_respond_with(status: 200, body: body)
     end
 
-    it 'returns all known cats' do
-      cats = resource.list
-
-      expect(cats.map(&:name)).to match_array([
-        'Garfield',
-        'Felix',
-        'Silvester',
-      ])
-    end
+    it_behaves_like 'listing cats', %w(Garfield Felix Silvester)
   end
 end
