@@ -1,9 +1,12 @@
 require 'spec_helper'
 require 'service_providers/pact_helper'
 require 'animals/resources/cat'
+require 'support/service_config'
 
 RSpec.describe Animals::Resources::Cat, :pact do
-  subject(:resource) { described_class.new }
+  include ServiceConfig
+
+  subject(:resource) { described_class.new(animals_uri) }
 
   describe '#list' do
     before do
