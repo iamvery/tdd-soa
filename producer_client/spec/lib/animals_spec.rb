@@ -1,0 +1,22 @@
+require 'spec_helper'
+require 'animals'
+
+RSpec.describe Animals do
+  describe '.client' do
+    it 'returns a real client' do
+      body = { cats: [{ name: 'real' }, { name: 'cats' }] }
+      stub_request(:get, 'http://animals/cats').to_return(body: body.to_json)
+      client = described_class.client('http://animals')
+
+      cats = client.cats.list
+
+      expect(cats.map(&:name)).to match_array(['real', 'cats'])
+    end
+
+    it 'returns a fake client' do
+      client = described_class.client('http://animals', fake: true)
+      cats = client.cats.list
+      expect(cats.map(&:name)).to match_array(['Garfield', 'Felix', 'Silvester'])
+    end
+  end
+end
