@@ -6,9 +6,9 @@ require 'ostruct'
 
 RSpec.describe Animals::Resources::Cat, :pact do
   describe '#list' do
-    garfield = OpenStruct.new(name: 'Garfield')
-    felix = OpenStruct.new(name: 'Felix')
-    sylvester = OpenStruct.new(name: 'Sylvester')
+    garfield = OpenStruct.new(name: 'Garfield', age: 39)
+    felix = OpenStruct.new(name: 'Felix', age: 99)
+    sylvester = OpenStruct.new(name: 'Sylvester', age: 76)
 
     before do
       body = {

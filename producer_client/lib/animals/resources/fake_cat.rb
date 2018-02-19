@@ -9,9 +9,9 @@ module Animals
 
       def list
         [
-          OpenStruct.new(name: 'Garfield'),
-          OpenStruct.new(name: 'Felix'),
-          OpenStruct.new(name: 'Sylvester'),
+          OpenStruct.new(name: 'Garfield', age: 39),
+          OpenStruct.new(name: 'Felix', age: 99),
+          OpenStruct.new(name: 'Sylvester', age: 76),
         ]
       end
     end
