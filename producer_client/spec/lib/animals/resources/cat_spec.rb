@@ -2,15 +2,20 @@ require 'spec_helper'
 require 'service_providers/pact_helper'
 require 'animals/resources/cat'
 require 'behaviors/cat_resource'
+require 'ostruct'
 
 RSpec.describe Animals::Resources::Cat, :pact do
   describe '#list' do
+    garfield = OpenStruct.new(name: 'Garfield')
+    felix = OpenStruct.new(name: 'Felix')
+    sylvester = OpenStruct.new(name: 'Sylvester')
+
     before do
       body = {
         cats: [
-          { name: 'Garfield' },
-          { name: 'Felix' },
-          { name: 'Sylvester' },
+          garfield.to_h,
+          felix.to_h,
+          sylvester.to_h,
         ],
       }
 
@@ -21,6 +26,6 @@ RSpec.describe Animals::Resources::Cat, :pact do
         .will_respond_with(status: 200, body: body)
     end
 
-    it_behaves_like 'listing cats', %w(Garfield Felix Sylvester)
+    it_behaves_like 'listing cats', [garfield, felix, sylvester]
   end
 end
