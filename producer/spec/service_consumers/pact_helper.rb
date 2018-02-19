@@ -3,9 +3,9 @@ require 'pact/provider/rspec'
 Pact.provider_states_for 'Animals Client' do
   provider_state 'some cats exist' do
     set_up do
-      Cat.create!(name: 'Garfield')
-      Cat.create!(name: 'Felix')
-      Cat.create!(name: 'Sylvester')
+      Cat.create!(name: 'Garfield', age: 39)
+      Cat.create!(name: 'Felix', age: 99)
+      Cat.create!(name: 'Sylvester', age: 76)
     end
 
     tear_down do
