@@ -7,7 +7,7 @@ RSpec.feature 'Cats', type: :feature do
 
       expect(page).to have_content('Garfield')
       expect(page).to have_content('Felix')
-      expect(page).to have_content('Silvester')
+      expect(page).to have_content('Sylvester')
     end
   end
 end

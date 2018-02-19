@@ -10,7 +10,7 @@ RSpec.describe Animals::Resources::Cat, :pact do
         cats: [
           { name: 'Garfield' },
           { name: 'Felix' },
-          { name: 'Silvester' },
+          { name: 'Sylvester' },
         ],
       }
 
@@ -21,6 +21,6 @@ RSpec.describe Animals::Resources::Cat, :pact do
         .will_respond_with(status: 200, body: body)
     end
 
-    it_behaves_like 'listing cats', %w(Garfield Felix Silvester)
+    it_behaves_like 'listing cats', %w(Garfield Felix Sylvester)
   end
 end

@@ -16,7 +16,7 @@ RSpec.describe Animals do
     it 'returns a fake client' do
       client = described_class.client('http://animals', fake: true)
       cats = client.cats.list
-      expect(cats.map(&:name)).to match_array(['Garfield', 'Felix', 'Silvester'])
+      expect(cats.map(&:name)).to match_array(['Garfield', 'Felix', 'Sylvester'])
     end
   end
 end

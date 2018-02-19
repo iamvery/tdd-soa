@@ -5,7 +5,7 @@ RSpec.describe 'Cats', type: :request do
     it 'responds successfully with a list of cats' do
       garfield = Cat.create!(name: 'Garfield')
       felix = Cat.create!(name: 'Felix')
-      silvester = Cat.create!(name: 'Silvester')
+      sylvester = Cat.create!(name: 'Sylvester')
 
       get '/cats'
 
@@ -15,7 +15,7 @@ RSpec.describe 'Cats', type: :request do
       expect(cats).to match_array([
         hash_including('name' => garfield.name),
         hash_including('name' => felix.name),
-        hash_including('name' => silvester.name),
+        hash_including('name' => sylvester.name),
       ])
     end
   end

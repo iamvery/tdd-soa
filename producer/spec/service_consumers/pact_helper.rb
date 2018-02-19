@@ -5,7 +5,7 @@ Pact.provider_states_for 'Animals Client' do
     set_up do
       Cat.create!(name: 'Garfield')
       Cat.create!(name: 'Felix')
-      Cat.create!(name: 'Silvester')
+      Cat.create!(name: 'Sylvester')
     end
 
     tear_down do

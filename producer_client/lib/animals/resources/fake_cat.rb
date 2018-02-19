@@ -11,7 +11,7 @@ module Animals
         [
           OpenStruct.new(name: 'Garfield'),
           OpenStruct.new(name: 'Felix'),
-          OpenStruct.new(name: 'Silvester'),
+          OpenStruct.new(name: 'Sylvester'),
         ]
       end
     end
