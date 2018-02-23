@@ -4,7 +4,12 @@ require 'animals'
 RSpec.describe Animals do
   describe '.client' do
     it 'returns a real client' do
-      body = { cats: [{ name: 'real' }, { name: 'cats' }] }
+      body = {
+        data: [
+          { attributes: { name: 'real' } },
+          { attributes: { name: 'cats' } },
+        ]
+      }
       stub_request(:get, 'http://animals/cats').to_return(body: body.to_json)
       client = described_class.client('http://animals')
 
