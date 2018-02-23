@@ -28,4 +28,29 @@ RSpec.describe Animals::Resources::Cat, :pact do
 
     it_behaves_like 'listing cats', [garfield, felix, sylvester]
   end
+
+  describe '#create' do
+    name = 'Garfield'
+    age = 39
+
+    before do
+      body = {
+        data: {
+          id: Pact.like('1'),
+          type: 'cat',
+          attributes: {
+            name: name,
+            age: age,
+          },
+        }
+      }
+
+      animals_service
+        .upon_receiving('a request to create a cat')
+        .with(method: :post, path: '/cats')
+        .will_respond_with(status: 201, body: body)
+    end
+
+    it_behaves_like 'creating a cat', name, age
+  end
 end

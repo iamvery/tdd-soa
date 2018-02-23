@@ -10,4 +10,11 @@ RSpec.describe Animals::Resources::FakeCat do
 
     it_behaves_like 'listing cats', [garfield, felix, sylvester]
   end
+
+  describe '#create' do
+    name = 'Garfield'
+    age = 39
+
+    it_behaves_like 'creating a cat', name, age
+  end
 end

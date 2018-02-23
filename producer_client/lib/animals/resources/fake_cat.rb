@@ -14,6 +14,10 @@ module Animals
           OpenStruct.new(name: 'Sylvester', age: 76),
         ]
       end
+
+      def create(**attributes)
+        OpenStruct.new(id: '1', **attributes)
+      end
     end
   end
 end

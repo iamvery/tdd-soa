@@ -17,6 +17,13 @@ module Animals
         parsed.fetch('data').map(&method(:deserialize))
       end
 
+      def create(attributes)
+        response = Net::HTTP.post(uri, attributes.to_json)
+        parsed = JSON.parse(response.body)
+        data = parsed.fetch('data')
+        deserialize(data)
+      end
+
       private
 
       def uri
