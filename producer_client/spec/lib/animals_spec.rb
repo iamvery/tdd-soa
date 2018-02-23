@@ -6,8 +6,8 @@ RSpec.describe Animals do
     it 'returns a real client' do
       body = {
         data: [
-          { attributes: { name: 'real' } },
-          { attributes: { name: 'cats' } },
+          { id: '1', attributes: { name: 'real' } },
+          { id: '2', attributes: { name: 'cats' } },
         ]
       }
       stub_request(:get, 'http://animals/cats').to_return(body: body.to_json)

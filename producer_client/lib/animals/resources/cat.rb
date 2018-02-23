@@ -22,8 +22,9 @@ module Animals
 
       # TODO this logic should probably be extracted to a value object
       def deserialize(data)
+        id = data.fetch('id')
         attributes = data.fetch('attributes')
-        OpenStruct.new(attributes)
+        OpenStruct.new(attributes.merge(id: id))
       end
     end
   end
