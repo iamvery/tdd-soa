@@ -15,9 +15,15 @@ module Animals
         uri = URI("#{host}/cats")
         response = Net::HTTP.get(uri)
         parsed = JSON.parse(response)
-        parsed.fetch('data').map { |cat_data|
-          OpenStruct.new(cat_data.fetch('attributes'))
-        }
+        parsed.fetch('data').map(&method(:deserialize))
+      end
+
+      private
+
+      # TODO this logic should probably be extracted to a value object
+      def deserialize(data)
+        attributes = data.fetch('attributes')
+        OpenStruct.new(attributes)
       end
     end
   end
