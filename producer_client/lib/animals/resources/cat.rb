@@ -12,13 +12,16 @@ module Animals
       end
 
       def list
-        uri = URI("#{host}/cats")
         response = Net::HTTP.get(uri)
         parsed = JSON.parse(response)
         parsed.fetch('data').map(&method(:deserialize))
       end
 
       private
+
+      def uri
+        @uri ||= URI("#{host}/cats")
+      end
 
       # TODO this logic should probably be extracted to a value object
       def deserialize(data)
