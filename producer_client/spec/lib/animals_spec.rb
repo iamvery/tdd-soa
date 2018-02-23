@@ -20,6 +20,9 @@ RSpec.describe Animals do
 
     it 'returns a fake client' do
       client = described_class.client('http://animals', fake: true)
+      client.cats.create(name: 'Garfield')
+      client.cats.create(name: 'Felix')
+      client.cats.create(name: 'Sylvester')
       cats = client.cats.list
       expect(cats.map(&:name)).to match_array(['Garfield', 'Felix', 'Sylvester'])
     end

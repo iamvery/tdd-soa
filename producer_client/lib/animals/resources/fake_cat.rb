@@ -3,20 +3,25 @@ require 'ostruct'
 module Animals
   module Resources
     class FakeCat
+      @@cats = []
+
+      def self.reset!
+        @@cats = []
+      end
+
       def initialize(_host)
         # noop
       end
 
       def list
-        [
-          OpenStruct.new(name: 'Garfield', age: 39),
-          OpenStruct.new(name: 'Felix', age: 99),
-          OpenStruct.new(name: 'Sylvester', age: 76),
-        ]
+        @@cats
       end
 
       def create(**attributes)
-        OpenStruct.new(id: '1', **attributes)
+        id = @@cats.length + 1
+        OpenStruct.new(id: id.to_s, **attributes).tap { |cat|
+          @@cats << cat
+        }
       end
     end
   end
