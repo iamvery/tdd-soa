@@ -23,7 +23,9 @@ RSpec.describe Animals do
       client.cats.create(name: 'Garfield')
       client.cats.create(name: 'Felix')
       client.cats.create(name: 'Sylvester')
+
       cats = client.cats.list
+
       expect(cats.map(&:name)).to match_array(['Garfield', 'Felix', 'Sylvester'])
     end
   end
