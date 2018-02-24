@@ -17,7 +17,11 @@ RSpec.shared_examples 'creating a cat' do |name, age|
   subject(:resource) { described_class.new(animals_uri) }
 
   it 'creates a new cat' do
-    cat = resource.create(name: name, age: age)
+    attributes = {
+      name: name,
+      age: age,
+    }
+    cat = resource.create(attributes)
 
     expect(cat.id).to match(/\A\d+\z/)
     expect(cat.name).to eq(name)

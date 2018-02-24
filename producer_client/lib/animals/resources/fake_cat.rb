@@ -17,9 +17,9 @@ module Animals
         @@cats
       end
 
-      def create(**attributes)
+      def create(attributes)
         id = @@cats.length + 1
-        OpenStruct.new(id: id.to_s, **attributes).tap { |cat|
+        OpenStruct.new(attributes.merge(id: id.to_s)).tap { |cat|
           @@cats << cat
         }
       end

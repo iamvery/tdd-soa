@@ -33,8 +33,8 @@ RSpec.describe Animals::Resources::FakeCat do
 
     it 'increments created cat IDs' do
       resource = described_class.new(nil)
-      first_cat = resource.create
-      second_cat = resource.create
+      first_cat = resource.create({})
+      second_cat = resource.create({})
 
       expect(first_cat.id).to eq('1')
       expect(second_cat.id).to eq('2')
