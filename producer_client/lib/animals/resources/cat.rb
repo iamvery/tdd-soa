@@ -18,7 +18,9 @@ module Animals
       end
 
       def create(attributes)
-        response = Net::HTTP.post(uri, attributes.to_json)
+        body = { cat: attributes }
+        headers = { 'Content-Type' => 'application/json' }
+        response = Net::HTTP.post(uri, body.to_json, headers)
         parsed = JSON.parse(response.body)
         data = parsed.fetch('data')
         deserialize(data)

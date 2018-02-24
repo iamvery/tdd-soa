@@ -62,7 +62,16 @@
       "description": "a request to create a cat",
       "request": {
         "method": "post",
-        "path": "/cats"
+        "path": "/cats",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "cat": {
+            "name": "Garfield",
+            "age": 39
+          }
+        }
       },
       "response": {
         "status": 201,

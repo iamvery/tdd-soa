@@ -34,7 +34,13 @@ RSpec.describe Animals::Resources::Cat, :pact do
     age = 39
 
     before do
-      body = {
+      request = {
+        cat: {
+          name: name,
+          age: age,
+        }
+      }
+      response = {
         data: {
           id: Pact.like('1'),
           type: 'cat',
@@ -44,11 +50,14 @@ RSpec.describe Animals::Resources::Cat, :pact do
           },
         }
       }
+      headers = {
+        'Content-Type' => 'application/json',
+      }
 
       animals_service
         .upon_receiving('a request to create a cat')
-        .with(method: :post, path: '/cats')
-        .will_respond_with(status: 201, body: body)
+        .with(method: :post, path: '/cats', body: request, headers: headers)
+        .will_respond_with(status: 201, body: response)
     end
 
     it_behaves_like 'creating a cat', name, age
