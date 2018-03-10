@@ -23,6 +23,12 @@ module Animals
           @@cats << cat
         }
       end
+
+      def delete(id)
+        cat = @@cats.find { |c| c.id == id }
+        @@cats.delete(cat)
+        true
+      end
     end
   end
 end

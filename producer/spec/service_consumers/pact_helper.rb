@@ -8,6 +8,12 @@ Pact.provider_states_for 'Animals Client' do
       Cat.create!(name: 'Sylvester', age: 76)
     end
   end
+
+  provider_state 'a cat exists with ID 123' do
+    set_up do
+      Cat.create!(id: 123, name: 'Shadow', age: 7)
+    end
+  end
 end
 
 Pact.tear_down do

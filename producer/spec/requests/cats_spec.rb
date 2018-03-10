@@ -51,4 +51,15 @@ RSpec.describe 'Cats', type: :request do
       })
     end
   end
+
+  describe 'DELETE /cats/:id' do
+    it 'responds successfully with no content' do
+      cat = Cat.create!(name: 'Shadow', age: 7)
+
+      delete "/cats/#{cat.id}"
+
+      expect(response.status).to eq(204)
+      expect(Cat.all).to be_empty
+    end
+  end
 end

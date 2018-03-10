@@ -28,3 +28,14 @@ RSpec.shared_examples 'creating a cat' do |name, age|
     expect(cat.age).to eq(age)
   end
 end
+
+RSpec.shared_examples 'deleting a cat' do |id|
+  include ServiceConfig
+
+  subject(:resource) { described_class.new(animals_uri) }
+
+  it 'deletes a cat' do
+    success = resource.delete(id)
+    expect(success).to be(true)
+  end
+end

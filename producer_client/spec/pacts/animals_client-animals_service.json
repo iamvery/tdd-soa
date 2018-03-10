@@ -7,6 +7,19 @@
   },
   "interactions": [
     {
+      "description": "a request to delete a cat",
+      "providerState": "a cat exists with ID 123",
+      "request": {
+        "method": "delete",
+        "path": "/cats/123"
+      },
+      "response": {
+        "status": 204,
+        "headers": {
+        }
+      }
+    },
+    {
       "description": "a request for all cats",
       "providerState": "some cats exist",
       "request": {

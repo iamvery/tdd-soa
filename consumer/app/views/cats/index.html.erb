@@ -2,6 +2,9 @@
 <%= link_to 'Add', new_cat_path %>
 <ul>
   <% @cats.each do |cat| %>
-    <li><%= cat.name %> (<%= cat.age %>)</li>
+    <li>
+      <%= cat.name %> (<%= cat.age %>)
+      <%= link_to 'Remove', cat_path(cat.id), method: :delete, confirm: 'Sure?' %>
+    </li>
   <% end %>
 </ul>

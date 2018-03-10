@@ -26,6 +26,13 @@ module Animals
         deserialize(data)
       end
 
+      def delete(id)
+        http = Net::HTTP.new(uri.host, uri.port)
+        delete = Net::HTTP::Delete.new("#{uri.path}/#{id}")
+        response = http.request(delete)
+        response.code == '204'
+      end
+
       private
 
       def uri

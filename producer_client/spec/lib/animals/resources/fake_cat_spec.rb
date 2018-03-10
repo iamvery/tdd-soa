@@ -40,4 +40,19 @@ RSpec.describe Animals::Resources::FakeCat do
       expect(second_cat.id).to eq('2')
     end
   end
+
+  describe '#delete' do
+    id = 123
+
+    it_behaves_like 'deleting a cat', id
+
+    it 'remove cat from in-memory store' do
+      resource = described_class.new(nil)
+      cat = resource.create(name: 'Shadow', age: 7)
+
+      resource.delete(cat.id)
+
+      expect(resource.list).to be_empty
+    end
+  end
 end

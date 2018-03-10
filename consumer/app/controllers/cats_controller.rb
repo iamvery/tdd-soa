@@ -8,6 +8,11 @@ class CatsController < ApplicationController
     redirect_to cats_path
   end
 
+  def destroy
+    ANIMALS.cats.delete(params[:id])
+    redirect_to cats_path
+  end
+
   private
 
   def cat_params
