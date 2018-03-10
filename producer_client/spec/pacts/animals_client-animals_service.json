@@ -57,6 +57,42 @@
           }
         }
       }
+    },
+    {
+      "description": "a request to create a cat",
+      "request": {
+        "method": "post",
+        "path": "/cats",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "cat": {
+            "name": "Garfield",
+            "age": 39
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+        },
+        "body": {
+          "data": {
+            "id": "1",
+            "type": "cat",
+            "attributes": {
+              "name": "Garfield",
+              "age": 39
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.id": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {

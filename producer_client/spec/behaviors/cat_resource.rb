@@ -10,3 +10,21 @@ RSpec.shared_examples 'listing cats' do |cats|
     expect(known_cats).to match_array(cats)
   end
 end
+
+RSpec.shared_examples 'creating a cat' do |name, age|
+  include ServiceConfig
+
+  subject(:resource) { described_class.new(animals_uri) }
+
+  it 'creates a new cat' do
+    attributes = {
+      name: name,
+      age: age,
+    }
+    cat = resource.create(attributes)
+
+    expect(cat.id).to match(/\A\d+\z/)
+    expect(cat.name).to eq(name)
+    expect(cat.age).to eq(age)
+  end
+end

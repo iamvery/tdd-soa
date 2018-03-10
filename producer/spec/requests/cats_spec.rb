@@ -32,4 +32,23 @@ RSpec.describe 'Cats', type: :request do
       })
     end
   end
+
+  describe 'POST /cats' do
+    it 'responds with successfully created cat' do
+      name = 'Garfield'
+      age = 39
+      body = { cat: { name: name, age: age } }
+
+      post '/cats', params: body.to_json, headers: { 'Content-Type' => 'application/json' }
+
+      expect(response.status).to eq(201)
+      json = JSON.parse(response.body)
+      data = json.fetch('data')
+      attributes = data.fetch('attributes')
+      expect(attributes).to eq({
+        'name' => name,
+        'age' => age,
+      })
+    end
+  end
 end

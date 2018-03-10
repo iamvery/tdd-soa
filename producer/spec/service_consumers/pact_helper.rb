@@ -7,11 +7,11 @@ Pact.provider_states_for 'Animals Client' do
       Cat.create!(name: 'Felix', age: 99)
       Cat.create!(name: 'Sylvester', age: 76)
     end
-
-    tear_down do
-      Cat.destroy_all
-    end
   end
+end
+
+Pact.tear_down do
+  Cat.destroy_all
 end
 
 Pact.service_provider 'Animals Service' do
