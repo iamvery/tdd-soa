@@ -11,12 +11,25 @@ RSpec.describe 'Cats', type: :request do
 
       expect(response.status).to eq(200)
       json = JSON.parse(response.body)
-      cats = json.fetch('cats')
-      expect(cats).to match_array([
-        hash_including('name' => garfield.name, 'age' => garfield.age),
-        hash_including('name' => felix.name, 'age' => felix.age),
-        hash_including('name' => sylvester.name, 'age' => sylvester.age),
-      ])
+      expect(json).to eq({
+        'data' => [
+          {
+            'id' => garfield.id.to_s,
+            'type' => 'cat',
+            'attributes' => { 'name' => garfield.name, 'age' => garfield.age },
+          },
+          {
+            'id' => felix.id.to_s,
+            'type' => 'cat',
+            'attributes' => { 'name' => felix.name, 'age' => felix.age },
+          },
+          {
+            'id' => sylvester.id.to_s,
+            'type' => 'cat',
+            'attributes' => { 'name' => sylvester.name, 'age' => sylvester.age },
+          },
+        ],
+      })
     end
   end
 end

@@ -12,10 +12,10 @@ RSpec.describe Animals::Resources::Cat, :pact do
 
     before do
       body = {
-        cats: [
-          garfield.to_h,
-          felix.to_h,
-          sylvester.to_h,
+        data: [
+          { id: Pact.like('1'), type: 'cat', attributes: { name: garfield.name, age: garfield.age} },
+          { id: Pact.like('2'), type: 'cat', attributes: { name: felix.name, age: felix.age} },
+          { id: Pact.like('3'), type: 'cat', attributes: { name: sylvester.name, age: sylvester.age} },
         ],
       }
 

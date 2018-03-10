@@ -15,7 +15,9 @@ module Animals
         uri = URI("#{host}/cats")
         response = Net::HTTP.get(uri)
         parsed = JSON.parse(response)
-        parsed.fetch('cats').map(&OpenStruct.method(:new))
+        parsed.fetch('data').map { |cat_data|
+          OpenStruct.new(cat_data.fetch('attributes'))
+        }
       end
     end
   end

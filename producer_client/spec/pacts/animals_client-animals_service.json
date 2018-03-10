@@ -18,20 +18,43 @@
         "headers": {
         },
         "body": {
-          "cats": [
+          "data": [
             {
-              "name": "Garfield",
-              "age": 39
+              "id": "1",
+              "type": "cat",
+              "attributes": {
+                "name": "Garfield",
+                "age": 39
+              }
             },
             {
-              "name": "Felix",
-              "age": 99
+              "id": "2",
+              "type": "cat",
+              "attributes": {
+                "name": "Felix",
+                "age": 99
+              }
             },
             {
-              "name": "Sylvester",
-              "age": 76
+              "id": "3",
+              "type": "cat",
+              "attributes": {
+                "name": "Sylvester",
+                "age": 76
+              }
             }
           ]
+        },
+        "matchingRules": {
+          "$.body.data[0].id": {
+            "match": "type"
+          },
+          "$.body.data[1].id": {
+            "match": "type"
+          },
+          "$.body.data[2].id": {
+            "match": "type"
+          }
         }
       }
     }
