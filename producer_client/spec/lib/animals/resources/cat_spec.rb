@@ -62,4 +62,18 @@ RSpec.describe Animals::Resources::Cat, :pact do
 
     it_behaves_like 'creating a cat', name, age
   end
+
+  describe '#delete' do
+    id = 123
+
+    before do
+      animals_service
+        .given("a cat exists with ID #{id}")
+        .upon_receiving('a request to delete a cat')
+        .with(method: :delete, path: "/cats/#{id}")
+        .will_respond_with(status: 204)
+    end
+
+    it_behaves_like 'deleting a cat', id
+  end
 end
