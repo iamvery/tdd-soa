@@ -20,13 +20,16 @@
         "body": {
           "cats": [
             {
-              "name": "Garfield"
+              "name": "Garfield",
+              "age": 39
             },
             {
-              "name": "Felix"
+              "name": "Felix",
+              "age": 99
             },
             {
-              "name": "Sylvester"
+              "name": "Sylvester",
+              "age": 76
             }
           ]
         }
